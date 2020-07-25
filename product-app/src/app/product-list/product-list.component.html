@@ -1,0 +1,46 @@
+<div class='card'>
+    <div class='card-header'>
+        List of Product Page
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by name:</div>
+            <div class='col-md-4'>
+            <input [(ngModel)] = "filterName">
+            </div>
+        </div>
+        <br>
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>
+                            Product Image
+                            <button hidden class='btn btn-primary'> Product Image</button>
+                        </th>
+                        <th>Product Code</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Available</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="products.length > 0">
+                    <tr *ngFor="let product of products | productFilter: filterName">
+                        <th [routerLink]="['/product-detail/' + product.code]" (click)="onProductDetail(product)">
+                            <img src={{product.imageUrl}} alt={{product.name}} style="width:50px">
+                        </th>
+                        <th [routerLink]="['/product-detail/' + product.code]" (click)="onProductDetail(product)">{{product.code}}</th>
+                        <th [routerLink]="['/product-detail/' + product.code]" (click)="onProductDetail(product)">{{product.name | uppercase | productName: "-"}}</th>
+                        <th [routerLink]="['/product-detail/' + product.code]" (click)="onProductDetail(product)">{{product.price | number : '1.2'}}</th>
+                        <th><i [ngClass]="{'glyphicon' : true, 'glyphicon-ok' : product.available, 'glyphicon-remove' : !product.available}"></i></th>
+                        <th><app-rating [rating]="product.rating" (ratingClicked)="onRatingClicked($event)"></app-rating></th>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="products.length == 0">
+                    <h3>No Product</h3>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

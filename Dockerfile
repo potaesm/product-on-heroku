@@ -1,11 +1,12 @@
+ARG app-name=product-app
 FROM node:14.5.0-alpine3.12 AS build
-WORKDIR /product-app
-COPY /product-app/package*.json ./
+WORKDIR /${app-name}
+COPY /${app-name}/package*.json ./
 RUN npm install
-COPY /product-app .
+COPY /${app-name} .
 RUN npm run build
 FROM nginx:1.19.1-alpine
-COPY --from=build /product-app/dist/product-app /usr/share/nginx/html
+COPY --from=build /${app-name}/dist/${app-name} /usr/share/nginx/html
 # Nginx configuration for Heroku
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'

@@ -9,6 +9,7 @@ COPY /${app_name} .
 RUN npm run build
 # Run stage
 FROM nginx:1.19.1-alpine
+ARG app_name
 COPY --from=build /${app_name}/dist/${app_name} /usr/share/nginx/html
 # Nginx configuration for Heroku
 COPY nginx.conf /etc/nginx/conf.d/default.conf

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.8.5 on win32)" generated="20200730 17:31:55.702" rpa="false">
+<suite id="s1" name="Product" source="C:\Users\suthinanmus\Desktop\product-on-heroku\robot_tests\product.robot">
+<test id="s1-t1" name="คลิกที่ Product List บน Product App">
+<kw name="เปิด Chrome" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20200730 17:31:55.975" level="INFO">Opening browser 'chrome' to base url 'https://suthinan-product-app.herokuapp.com'.</msg>
+<status status="PASS" starttime="20200730 17:31:55.975" endtime="20200730 17:32:02.441"></status>
+</kw>
+<status status="PASS" starttime="20200730 17:31:55.974" endtime="20200730 17:32:02.441"></status>
+</kw>
+<kw name="คลิก Product List">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>//a[@href="/list"]</arg>
+</arguments>
+<status status="PASS" starttime="20200730 17:32:02.443" endtime="20200730 17:32:02.492"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//a[@href="/list"]</arg>
+</arguments>
+<msg timestamp="20200730 17:32:02.493" level="INFO">Clicking element '//a[@href="/list"]'.</msg>
+<status status="PASS" starttime="20200730 17:32:02.493" endtime="20200730 17:32:02.687"></status>
+</kw>
+<status status="PASS" starttime="20200730 17:32:02.442" endtime="20200730 17:32:02.687"></status>
+</kw>
+<status status="PASS" starttime="20200730 17:31:55.973" endtime="20200730 17:32:02.688" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200730 17:31:55.706" endtime="20200730 17:32:02.689"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Product">Product</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
